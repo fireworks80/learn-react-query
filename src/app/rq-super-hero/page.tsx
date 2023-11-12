@@ -1,16 +1,19 @@
 'use client';
 import { useQuery } from 'react-query';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { Hero } from '../super-hero/page';
 
-const fetchSuperHeroes = () => axios.get('http://localhost:4000/superheroes');
+const fetchSuperHeroes = (): Promise<AxiosResponse<Array<Hero>, void>> =>
+	axios.get('http://localhost:4000/superheroes');
 
 export default function RqSuperHero() {
 	const { isLoading, data, isError, error, isFetching, refetch } = useQuery(
 		'super-heros',
 		fetchSuperHeroes,
-		{ cacheTime: 5000 } //cache의 시간을 변경 할 수 있다.
+		// { cacheTime: 5000 } //cache의 시간을 변경 할 수 있다.
 		// { enabled: false }
+		// { refetchOnMount: true } // mount 될 때마다 data를 다시 fetch 한다.
+		{ refetchOnWindowFocus: true }
 	);
 
 	console.log(isLoading, isFetching);
@@ -26,7 +29,7 @@ export default function RqSuperHero() {
 		<>
 			<h2>RQ Super Hero</h2>
 			<button onClick={refetch}>fetch heros</button>
-			{data?.data.map(({ name }: Hero) => (
+			{data?.data.map(({ name }) => (
 				<p key={name}>{name}</p>
 			))}
 		</>
