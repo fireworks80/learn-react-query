@@ -16,3 +16,8 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 yarn run server-json
 ```
+
+### react-query
+
+**Query Cache**
+모든 쿼리 결과는 5분간 캐시 된다.
