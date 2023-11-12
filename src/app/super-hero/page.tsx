@@ -3,7 +3,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-type Hero = {
+export type Hero = {
 	id: number;
 	name: string;
 	alterEgo: string;

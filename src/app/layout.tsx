@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import Providers from '@/Provider';
 import './globals.css';
 import Link from 'next/link';
 
@@ -17,22 +18,24 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-			<body className={inter.className}>
-				<nav className='nav'>
-					<ul>
-						<li>
-							<Link href='/'>Home</Link>
-						</li>
-						<li>
-							<Link href='/super-hero'>Super Hero</Link>
-						</li>
-						<li>
-							<Link href='/rq-super-hero'>RQ Super Hero</Link>
-						</li>
-					</ul>
-				</nav>
-				{children}
-			</body>
+			<Providers>
+				<body className={inter.className}>
+					<nav className='nav'>
+						<ul>
+							<li>
+								<Link href='/'>Home</Link>
+							</li>
+							<li>
+								<Link href='/super-hero'>Super Hero</Link>
+							</li>
+							<li>
+								<Link href='/rq-super-hero'>RQ Super Hero</Link>
+							</li>
+						</ul>
+					</nav>
+					{children}
+				</body>
+			</Providers>
 		</html>
 	);
 }
