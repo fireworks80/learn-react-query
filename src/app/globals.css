@@ -123,3 +123,21 @@ a {
 	display: block;
 	padding: 5px 10px;
 }
+
+.pagination {
+	display: flex;
+	list-style: none;
+}
+
+.pagination li + li {
+	margin-left: 10px;
+}
+
+.pagination button {
+	cursor: pointer;
+	padding: 10px;
+}
+
+.pagination :disabled {
+	cursor: default;
+}
